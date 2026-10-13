@@ -88,36 +88,58 @@
 }
 
 .te-pop.is-event {
-  top: calc(12 * var(--u));
-  left: calc(74 * var(--u));
-  width: calc(380 * var(--u));
+  top: calc(16 * var(--u));
+  left: calc(40 * var(--u));
+  width: calc(310 * var(--u));
 }
 
 .te-pop.is-chat {
-  top: calc(168 * var(--u));
-  left: calc(858 * var(--u));
-  width: calc(400 * var(--u));
+  top: calc(164 * var(--u));
+  left: calc(962 * var(--u));
+  width: calc(320 * var(--u));
 }
 
 .te-link {
   position: absolute;
-  z-index: 2;
-  height: 1px;
-  background: rgba(28, 25, 23, 0.38);
+  z-index: 3;
+  height: calc(2 * var(--u));
+  margin-top: calc(-1 * var(--u));
+  background: var(--brand);
   opacity: 0;
   transition: opacity 400ms var(--ease-out);
 }
 
+.te-link::before,
+.te-link::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: calc(8 * var(--u));
+  height: calc(8 * var(--u));
+  border: calc(2 * var(--u)) solid #fff;
+  border-radius: 50%;
+  background: var(--brand);
+  transform: translate(-50%, -50%);
+}
+
+.te-link::before {
+  left: 0;
+}
+
+.te-link::after {
+  left: 100%;
+}
+
 .te-link.is-event {
-  top: calc(180 * var(--u));
-  left: calc(454 * var(--u));
-  width: calc(28 * var(--u));
+  top: calc(181 * var(--u));
+  left: calc(350 * var(--u));
+  width: calc(132 * var(--u));
 }
 
 .te-link.is-chat {
-  top: calc(276 * var(--u));
+  top: calc(277 * var(--u));
   left: calc(830 * var(--u));
-  width: calc(28 * var(--u));
+  width: calc(132 * var(--u));
 }
 
 .te-hero.is-event-open .te-link.is-event,
