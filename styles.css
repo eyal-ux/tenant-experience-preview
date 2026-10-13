@@ -80,15 +80,6 @@
   display: none;
 }
 
-.te-pop::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  width: calc(20 * var(--u));
-  height: 1px;
-  background: rgba(28, 25, 23, 0.28);
-}
-
 .te-pop .te-card-visual {
   margin-top: 0;
   flex: none;
@@ -97,26 +88,46 @@
 }
 
 .te-pop.is-event {
-  top: calc(96 * var(--u));
-  left: calc(108 * var(--u));
-  transform: scale(0.7);
-  transform-origin: right center;
-}
-
-.te-pop.is-event::after {
-  right: calc(-20 * var(--u));
+  top: calc(12 * var(--u));
+  left: calc(74 * var(--u));
+  width: calc(380 * var(--u));
 }
 
 .te-pop.is-chat {
-  top: calc(236 * var(--u));
-  left: calc(868 * var(--u));
-  width: calc(360 * var(--u));
-  transform: scale(0.74);
-  transform-origin: left center;
+  top: calc(168 * var(--u));
+  left: calc(858 * var(--u));
+  width: calc(400 * var(--u));
 }
 
-.te-pop.is-chat::after {
-  left: calc(-20 * var(--u));
+.te-link {
+  position: absolute;
+  z-index: 2;
+  height: 1px;
+  background: rgba(28, 25, 23, 0.38);
+  opacity: 0;
+  transition: opacity 400ms var(--ease-out);
+}
+
+.te-link.is-event {
+  top: calc(180 * var(--u));
+  left: calc(454 * var(--u));
+  width: calc(28 * var(--u));
+}
+
+.te-link.is-chat {
+  top: calc(276 * var(--u));
+  left: calc(830 * var(--u));
+  width: calc(28 * var(--u));
+}
+
+.te-hero.is-event-open .te-link.is-event,
+.te-hero.is-chat-open .te-link.is-chat {
+  opacity: 1;
+}
+
+.te-hero.is-clearing .te-link {
+  opacity: 0;
+  transition-duration: 360ms;
 }
 
 .te-hero.is-event-open .te-pop.is-event,
@@ -130,17 +141,29 @@
 }
 
 .te-card.is-main {
-  top: calc(8 * var(--u));
-  left: calc(460 * var(--u));
+  top: calc(6 * var(--u));
+  left: calc(448 * var(--u));
   z-index: 1;
-  width: calc(392 * var(--u));
-  height: calc(514 * var(--u));
-  border-color: rgba(255, 255, 255, 0.06);
+  width: calc(416 * var(--u));
+  height: calc(518 * var(--u));
+  padding: calc(12 * var(--u));
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: calc(42 * var(--u));
+  background: #141414;
+  box-shadow: 0 calc(28 * var(--u)) calc(50 * var(--u)) calc(-30 * var(--u)) rgba(18, 37, 35, 0.4);
+  animation-delay: 0.08s;
+}
+
+.te-card.is-main .te-card-visual {
+  margin-top: 0;
+  height: 100%;
+  padding-top: calc(14 * var(--u));
+  overflow: hidden;
+  border-radius: calc(32 * var(--u));
   background:
     radial-gradient(90% 55% at 18% 8%, rgba(42, 120, 92, 0.55) 0%, transparent 70%),
     radial-gradient(80% 50% at 92% 96%, rgba(17, 118, 84, 0.45) 0%, transparent 72%),
     linear-gradient(180deg, #0f1f1a 0%, #070d0b 100%);
-  animation-delay: 0.08s;
 }
 
 /* Inner-edge fade sits on the mockup only, so the card titles stay readable. */
@@ -452,6 +475,23 @@
   box-shadow: 0 calc(16 * var(--u)) calc(36 * var(--u)) calc(-22 * var(--u)) rgba(18, 37, 35, 0.28);
 }
 
+.te-pop .te-page-body b {
+  font-size: calc(20 * var(--u));
+}
+
+.te-pop .te-page-when,
+.te-pop .te-page-body p,
+.te-pop .te-text,
+.te-pop .te-sender {
+  font-size: calc(16 * var(--u));
+}
+
+.te-pop .te-page-file,
+.te-pop .te-translation,
+.te-pop .te-screen-title {
+  font-size: calc(14 * var(--u));
+}
+
 .te-pop.is-chat .te-phone {
   position: relative;
   top: auto;
@@ -738,7 +778,8 @@
     aspect-ratio: 440 / 600;
   }
 
-  .te-pop {
+  .te-pop,
+  .te-link {
     display: none;
   }
 
