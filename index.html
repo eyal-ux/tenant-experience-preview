@@ -428,8 +428,8 @@ grid-template-rows:0fr!important;
   .w--open .hamburger_12_line:last-child {
     transform: translateY(calc(var(--thickness) * -1 + var(--gap) * -1)) rotate(calc(var(--rotate) * 1deg));
   }
-</style></div><div class="hamburger_12_line"></div><div class="hamburger_12_line"></div></div></div></div></div></div><main class="main-wrapper"><header class="section_header26"><div class="padding-global"><div class="container-large"><div class="header26_padding padding-section-large"><div gush-fade="" class="header26_component"><div STYLE="max-width: " class="max-width-large align-center"><h1 class="work_title heading-style-h1">Better communication, from your team to your tenants.</h1></div><div class="header26_image-wrapper is-move-top"><div class="te-hero" role="img" aria-label="A phone lock screen. The happy hour notification opens the event page, then the work order notification opens the translated chat.">
-  <article class="te-card te-pop is-event">
+</style></div><div class="hamburger_12_line"></div><div class="hamburger_12_line"></div></div></div></div></div></div><main class="main-wrapper"><header class="section_header26"><div class="padding-global"><div class="container-large"><div class="header26_padding padding-section-large"><div gush-fade="" class="header26_component"><div STYLE="max-width: " class="max-width-large align-center"><h1 class="work_title heading-style-h1">Better communication, from your team to your tenants.</h1></div><div class="header26_image-wrapper is-move-top"><div class="te-hero" role="img" aria-label="Three cards: a building event page in the tenant app, Visitt+ notifications for a broadcast and a work order message, and a work order chat translated from Spanish on a phone">
+  <article class="te-card is-side">
     <div class="te-card-visual">
       <div class="te-page">
         <div class="te-page-bar"><svg viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></svg><span>Events</span><i></i></div>
@@ -444,9 +444,6 @@ grid-template-rows:0fr!important;
     </div>
   </article>
 
-  <span class="te-link is-event" aria-hidden="true"></span>
-  <span class="te-link is-chat" aria-hidden="true"></span>
-
   <article class="te-card is-main">
     <div class="te-card-visual">
       <div class="te-lock"><b>9:41</b><span>Monday, October 12</span></div>
@@ -459,7 +456,7 @@ grid-template-rows:0fr!important;
             <span>Thursday at 5:30 PM on the rooftop.</span>
           </span>
         </div>
-        <div class="te-push is-second" style="--push-order: 1">
+        <div class="te-push" style="--push-order: 1">
           <span class="te-push-icon"><svg viewBox="1.39 1.44 13.19 13.19" fill="none" aria-hidden="true"><path d="M10.6473 8.26891C11.1415 7.66829 11.0553 6.78073 10.4547 6.2865C9.85406 5.79227 8.9665 5.87851 8.47227 6.47913L4.37045 11.6293C3.87621 12.2299 3.96246 13.1175 4.56308 13.6117C5.1637 14.1059 6.05125 14.0197 6.54549 13.4191L10.6473 8.26891Z" fill="#44403C"/><path d="M3.68622 10.7098C3.38493 10.7607 3.07529 10.7193 2.798 10.5911C2.5207 10.4629 2.28873 10.2539 2.13257 9.99159C1.97642 9.72928 1.90338 9.42591 1.92307 9.12138C1.94276 8.81684 2.05424 8.52538 2.24287 8.2853L2.60206 7.89172C2.84984 7.57607 3.21302 7.37167 3.6117 7.32347C4.01039 7.27526 4.41191 7.3872 4.72794 7.63468C5.04398 7.88214 5.24865 8.24487 5.29693 8.64306C5.34519 9.04124 5.2331 9.44225 4.98532 9.75789L4.62519 10.1515C4.39307 10.4483 4.05808 10.6475 3.68622 10.7098Z" fill="#44403C"/><path d="M12.2709 2.13281H11.7076C11.5002 2.13281 11.332 2.30096 11.332 2.50838V5.88848C11.332 6.0959 11.5002 6.26405 11.7076 6.26405H12.2709C12.4784 6.26405 12.6465 6.0959 12.6465 5.88848V2.50838C12.6465 2.30096 12.4784 2.13281 12.2709 2.13281Z" fill="#44403C"/><path d="M13.6795 3.54102H10.2994C10.092 3.54102 9.92383 3.70916 9.92383 3.91658V4.47993C9.92383 4.68735 10.092 4.8555 10.2994 4.8555H13.6795C13.8869 4.8555 14.0551 4.68735 14.0551 4.47993V3.91658C14.0551 3.70916 13.8869 3.54102 13.6795 3.54102Z" fill="#44403C"/></svg></span>
           <span class="te-push-body">
             <span class="te-push-head"><b>Visitt+</b><small>2m ago</small></span>
@@ -471,7 +468,7 @@ grid-template-rows:0fr!important;
     </div>
   </article>
 
-  <article class="te-card te-pop is-chat">
+  <article class="te-card is-side">
     <div class="te-card-visual">
       <div class="te-phone">
         <div class="te-screen">
@@ -512,7 +509,7 @@ grid-template-rows:0fr!important;
     if (!hero) return;
     var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reduce || !("IntersectionObserver" in window)) {
-      hero.classList.add("is-revealed", "is-event-open", "is-second-push", "is-chat-open");
+      hero.classList.add("is-revealed");
       return;
     }
 
@@ -522,12 +519,9 @@ grid-template-rows:0fr!important;
 
     function playLoop() {
       hero.classList.add("is-revealed");
-      at(1100, function () { hero.classList.add("is-event-open"); });
-      at(2200, function () { hero.classList.add("is-second-push"); });
-      at(3200, function () { hero.classList.add("is-chat-open"); });
       at(8200, function () { hero.classList.add("is-clearing"); });
       at(8700, function () {
-        hero.classList.remove("is-revealed", "is-clearing", "is-event-open", "is-second-push", "is-chat-open");
+        hero.classList.remove("is-revealed", "is-clearing");
       });
       at(9300, playLoop);
     }

@@ -1,5 +1,6 @@
-/* Tenant experience hero. The lock screen is centered. Each notification
-   opens the matching piece of the tenant app beside it: the event page, then the chat.
+/* Tenant experience hero: three Better Stack-style cards of equal height.
+   The middle card is a little wider and carries the highlighted surface.
+   Side cards fade toward the middle, and the gaps between cards are equal.
    Laid out on a 1312 x 530 header frame; --u is one frame unit. */
 
 .te-hero {
@@ -63,129 +64,40 @@
   display: none;
 }
 
-.te-pop {
-  width: calc(340 * var(--u));
-  height: auto;
-  border: 0;
-  background: transparent;
-  box-shadow: none;
-  opacity: 0;
-  animation: none;
-  transition:
-    opacity 520ms var(--ease-out),
-    transform 640ms var(--ease-out);
+.te-card.is-side {
+  top: calc(36 * var(--u));
+  width: calc(392 * var(--u));
+  height: calc(458 * var(--u));
+  background: linear-gradient(180deg, #fbfaf9 0%, #f4f2ef 100%);
 }
 
-.te-pop::before {
-  display: none;
+.te-card.is-side .te-card-visual {
+  overflow: hidden;
+  border-radius: 0 0 calc(23 * var(--u)) calc(23 * var(--u));
 }
 
-.te-pop .te-card-visual {
-  margin-top: 0;
-  flex: none;
-  overflow: visible;
-  border-radius: calc(16 * var(--u));
+.te-card.is-side:first-child {
+  left: calc(52 * var(--u));
+  animation-delay: 0.2s;
 }
 
-.te-pop.is-event {
-  top: calc(16 * var(--u));
-  left: calc(40 * var(--u));
-  width: calc(310 * var(--u));
-}
-
-.te-pop.is-chat {
-  top: calc(164 * var(--u));
-  left: calc(962 * var(--u));
-  width: calc(320 * var(--u));
-}
-
-.te-link {
-  position: absolute;
-  z-index: 3;
-  height: calc(2 * var(--u));
-  margin-top: calc(-1 * var(--u));
-  background: var(--brand);
-  opacity: 0;
-  transition: opacity 400ms var(--ease-out);
-}
-
-.te-link::before,
-.te-link::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  width: calc(8 * var(--u));
-  height: calc(8 * var(--u));
-  border: calc(2 * var(--u)) solid #fff;
-  border-radius: 50%;
-  background: var(--brand);
-  transform: translate(-50%, -50%);
-}
-
-.te-link::before {
-  left: 0;
-}
-
-.te-link::after {
-  left: 100%;
-}
-
-.te-link.is-event {
-  top: calc(181 * var(--u));
-  left: calc(350 * var(--u));
-  width: calc(132 * var(--u));
-}
-
-.te-link.is-chat {
-  top: calc(277 * var(--u));
-  left: calc(830 * var(--u));
-  width: calc(132 * var(--u));
-}
-
-.te-hero.is-event-open .te-link.is-event,
-.te-hero.is-chat-open .te-link.is-chat {
-  opacity: 1;
-}
-
-.te-hero.is-clearing .te-link {
-  opacity: 0;
-  transition-duration: 360ms;
-}
-
-.te-hero.is-event-open .te-pop.is-event,
-.te-hero.is-chat-open .te-pop.is-chat {
-  opacity: 1;
-}
-
-.te-hero.is-clearing .te-pop {
-  opacity: 0;
-  transition-duration: 360ms;
+.te-card.is-side:last-child {
+  left: calc(868 * var(--u));
+  animation-delay: 0.3s;
 }
 
 .te-card.is-main {
-  top: calc(6 * var(--u));
-  left: calc(448 * var(--u));
+  top: calc(8 * var(--u));
+  left: calc(460 * var(--u));
   z-index: 1;
-  width: calc(416 * var(--u));
-  height: calc(518 * var(--u));
-  padding: calc(12 * var(--u));
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: calc(42 * var(--u));
-  background: #141414;
-  box-shadow: 0 calc(28 * var(--u)) calc(50 * var(--u)) calc(-30 * var(--u)) rgba(18, 37, 35, 0.4);
-  animation-delay: 0.08s;
-}
-
-.te-card.is-main .te-card-visual {
-  margin-top: 0;
-  height: 100%;
-  padding-top: calc(14 * var(--u));
-  overflow: hidden;
-  border-radius: calc(32 * var(--u));
+  width: calc(392 * var(--u));
+  height: calc(514 * var(--u));
+  border-color: rgba(255, 255, 255, 0.06);
   background:
     radial-gradient(90% 55% at 18% 8%, rgba(42, 120, 92, 0.55) 0%, transparent 70%),
     radial-gradient(80% 50% at 92% 96%, rgba(17, 118, 84, 0.45) 0%, transparent 72%),
     linear-gradient(180deg, #0f1f1a 0%, #070d0b 100%);
+  animation-delay: 0.08s;
 }
 
 /* Inner-edge fade sits on the mockup only, so the card titles stay readable. */
@@ -401,19 +313,7 @@
   transform: translate3d(0, 0, 0);
 }
 
-.te-hero.is-revealed .te-push.is-second {
-  opacity: 0;
-  transform: translate3d(0, calc(-18 * var(--u)), 0) scale(0.96);
-  transition-delay: 0ms;
-}
-
-.te-hero.is-second-push .te-push.is-second {
-  opacity: 1;
-  transform: translate3d(0, 0, 0);
-}
-
-.te-hero.is-clearing .te-push,
-.te-hero.is-clearing .te-push.is-second {
+.te-hero.is-clearing .te-push {
   opacity: 0;
   transform: translate3d(0, calc(-8 * var(--u)), 0);
   transition-duration: 360ms;
@@ -489,45 +389,19 @@
     0 calc(16 * var(--u)) calc(36 * var(--u)) calc(-22 * var(--u)) rgba(18, 37, 35, 0.22);
 }
 
-.te-pop.is-event .te-page {
-  position: relative;
-  top: auto;
-  left: auto;
-  width: 100%;
-  box-shadow: 0 calc(16 * var(--u)) calc(36 * var(--u)) calc(-22 * var(--u)) rgba(18, 37, 35, 0.28);
-}
-
-.te-pop .te-page-body b {
-  font-size: calc(20 * var(--u));
-}
-
-.te-pop .te-page-when,
-.te-pop .te-page-body p,
-.te-pop .te-text,
-.te-pop .te-sender {
-  font-size: calc(16 * var(--u));
-}
-
-.te-pop .te-page-file,
-.te-pop .te-translation,
-.te-pop .te-screen-title {
-  font-size: calc(14 * var(--u));
-}
-
-.te-pop.is-chat .te-phone {
-  position: relative;
-  top: auto;
-  left: auto;
-  width: 100%;
+.te-card.is-side .te-phone {
+  top: 0;
+  left: calc(20 * var(--u));
+  width: calc(352 * var(--u));
   height: auto;
-  padding: calc(12 * var(--u));
-  border: 1px solid var(--line);
-  border-radius: calc(16 * var(--u));
-  background: #fff;
-  box-shadow: 0 calc(16 * var(--u)) calc(36 * var(--u)) calc(-22 * var(--u)) rgba(18, 37, 35, 0.28);
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
 }
 
-.te-pop.is-chat .te-screen {
+.te-card.is-side .te-screen {
   height: auto;
   border-radius: 0;
   background: transparent;
@@ -800,8 +674,7 @@
     aspect-ratio: 440 / 600;
   }
 
-  .te-pop,
-  .te-link {
+  .te-card.is-side {
     display: none;
   }
 
