@@ -1410,10 +1410,6 @@
   animation: bb-shine 1700ms cubic-bezier(0.45, 0, 0.2, 1) both;
 }
 
-.bb-view.is-shine .bb-banner.is-footer::after {
-  animation-delay: 260ms;
-}
-
 @keyframes bb-shine {
   from { transform: translateX(-110%); }
   to { transform: translateX(110%); }
