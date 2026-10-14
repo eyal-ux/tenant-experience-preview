@@ -1300,15 +1300,14 @@
   position: absolute;
   inset: 0;
   opacity: 0;
-  transform: translate3d(0, calc(8 * var(--u)), 0) scale(0.985);
-  transition: opacity 360ms var(--ease-out), transform 560ms var(--ease-out);
+  transform: translate3d(0, calc(6 * var(--u)), 0) scale(0.99);
+  transition: opacity 220ms var(--ease-out), transform 420ms var(--ease-out);
   pointer-events: none;
 }
 
 .bb-view.is-active {
   opacity: 1;
   transform: none;
-  transition-delay: 120ms;
 }
 
 .bb-email {

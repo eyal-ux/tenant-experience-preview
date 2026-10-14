@@ -761,14 +761,14 @@ grid-template-rows:0fr!important;
       stage.dataset.channel = channel;
       stage.style.setProperty("--tab", index);
       tabs.forEach(function (tab, tabIndex) { tab.classList.toggle("is-selected", tabIndex === index); });
-      channels.forEach(function (key) { views[key].classList.toggle("is-active", key === channel); });
-    }
-
-    function shine(channel) {
-      var view = views[channel];
-      view.classList.remove("is-shine");
-      void view.offsetWidth;
-      view.classList.add("is-shine");
+      channels.forEach(function (key) {
+        views[key].classList.toggle("is-active", key === channel);
+        views[key].classList.remove("is-shine");
+      });
+      if (channel !== "push") {
+        void views[channel].offsetWidth;
+        views[channel].classList.add("is-shine");
+      }
     }
 
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches || !("IntersectionObserver" in window)) return;
@@ -800,13 +800,11 @@ grid-template-rows:0fr!important;
 
     function play() {
       park();
-      at(300, function () { shine("email"); });
       at(2300, function () { stage.classList.add("is-cursor"); });
       at(2500, function () { moveTo(tabs[1]); });
       at(3400, function () { press(tabs[1], function () { show("push"); }); });
       at(5900, function () { moveTo(tabs[2]); });
       at(6800, function () { press(tabs[2], function () { show("app"); }); });
-      at(7300, function () { shine("app"); });
       at(9800, function () { moveTo(tabs[0]); });
       at(10700, function () { press(tabs[0], function () { show("email"); }); });
       at(11100, function () { stage.classList.remove("is-cursor"); });
@@ -816,6 +814,7 @@ grid-template-rows:0fr!important;
     var observer = new IntersectionObserver(function (entries) {
       if (!entries.some(function (entry) { return entry.isIntersecting; })) return;
       observer.disconnect();
+      show("email");
       play();
     }, { threshold: 0.45 });
     observer.observe(stage);
