@@ -68,7 +68,7 @@
   top: calc(36 * var(--u));
   width: calc(392 * var(--u));
   height: calc(458 * var(--u));
-  background: linear-gradient(180deg, #fbfaf9 0%, #f4f2ef 100%);
+  background: #fefcf9;
 }
 
 .te-card.is-side .te-card-visual {
@@ -656,6 +656,10 @@
 .te-hero:not(.is-original) .te-swap > .te-es,
 .te-hero.is-original .te-swap > .te-en {
   opacity: 0;
+}
+
+.section_header26:has(.te-hero) {
+  background-color: #f5f1ec;
 }
 
 .header26_image-wrapper:has(.te-hero) {
