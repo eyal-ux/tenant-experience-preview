@@ -170,6 +170,24 @@
   }
 }
 
+/* Uses the individual rotate/scale properties so it stacks on top of te-rise's transform. */
+@keyframes te-nudge {
+  0% { rotate: 0deg; scale: 1; }
+  14% { rotate: -2.4deg; scale: 1.025; }
+  30% { rotate: 2deg; }
+  46% { rotate: -1.3deg; }
+  62% { rotate: 0.7deg; }
+  80% { rotate: -0.25deg; scale: 1.01; }
+  100% { rotate: 0deg; scale: 1; }
+}
+
+.te-hero.is-event-nudge .te-card.is-event,
+.te-hero.is-chat-nudge .te-card.is-chat {
+  animation:
+    te-rise 1s var(--ease-out) both,
+    te-nudge 680ms cubic-bezier(0.36, 0.07, 0.19, 0.97);
+}
+
 /* Building page: the tenant app content page with its cover, body, and file. */
 
 .te-page {
@@ -305,7 +323,7 @@
   transition:
     opacity 520ms var(--ease-out),
     transform 720ms var(--ease-out);
-  transition-delay: calc(var(--push-order) * 520ms + 200ms);
+  transition-delay: calc(var(--push-order) * 1600ms + 200ms);
 }
 
 .te-hero.is-revealed .te-push {

@@ -429,7 +429,7 @@ grid-template-rows:0fr!important;
     transform: translateY(calc(var(--thickness) * -1 + var(--gap) * -1)) rotate(calc(var(--rotate) * 1deg));
   }
 </style></div><div class="hamburger_12_line"></div><div class="hamburger_12_line"></div></div></div></div></div></div><main class="main-wrapper"><header class="section_header26"><div class="padding-global"><div class="container-large"><div class="header26_padding padding-section-large"><div gush-fade="" class="header26_component"><div STYLE="max-width: " class="max-width-large align-center"><h1 class="work_title heading-style-h1">Better communication, from your team to your tenants.</h1></div><div class="header26_image-wrapper is-move-top"><div class="te-hero" role="img" aria-label="Three cards: a building event page in the tenant app, Visitt+ notifications for a broadcast and a work order message, and a work order chat translated from Spanish on a phone">
-  <article class="te-card is-side">
+  <article class="te-card is-side is-event">
     <div class="te-card-visual">
       <div class="te-page">
         <div class="te-page-bar"><svg viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></svg><span>Events</span><i></i></div>
@@ -468,7 +468,7 @@ grid-template-rows:0fr!important;
     </div>
   </article>
 
-  <article class="te-card is-side">
+  <article class="te-card is-side is-chat">
     <div class="te-card-visual">
       <div class="te-phone">
         <div class="te-screen">
@@ -519,9 +519,11 @@ grid-template-rows:0fr!important;
 
     function playLoop() {
       hero.classList.add("is-revealed");
+      at(620, function () { hero.classList.add("is-event-nudge"); });
+      at(2220, function () { hero.classList.add("is-chat-nudge"); });
       at(8200, function () { hero.classList.add("is-clearing"); });
       at(8700, function () {
-        hero.classList.remove("is-revealed", "is-clearing");
+        hero.classList.remove("is-revealed", "is-clearing", "is-event-nudge", "is-chat-nudge");
       });
       at(9300, playLoop);
     }
