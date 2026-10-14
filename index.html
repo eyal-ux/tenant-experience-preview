@@ -517,13 +517,30 @@ grid-template-rows:0fr!important;
       setTimeout(action, delay);
     }
 
+    var nudgeFrames = [
+      { rotate: "0deg", scale: 1, offset: 0 },
+      { rotate: "-2.4deg", scale: 1.025, offset: 0.14 },
+      { rotate: "2deg", offset: 0.3 },
+      { rotate: "-1.3deg", offset: 0.46 },
+      { rotate: "0.7deg", offset: 0.62 },
+      { rotate: "-0.25deg", scale: 1.01, offset: 0.8 },
+      { rotate: "0deg", scale: 1, offset: 1 }
+    ];
+
+    function nudge(selector) {
+      hero.querySelector(selector).animate(nudgeFrames, {
+        duration: 680,
+        easing: "cubic-bezier(0.36, 0.07, 0.19, 0.97)"
+      });
+    }
+
     function playLoop() {
       hero.classList.add("is-revealed");
-      at(620, function () { hero.classList.add("is-event-nudge"); });
-      at(2220, function () { hero.classList.add("is-chat-nudge"); });
+      at(200, function () { nudge(".te-card.is-event"); });
+      at(1800, function () { nudge(".te-card.is-chat"); });
       at(8200, function () { hero.classList.add("is-clearing"); });
       at(8700, function () {
-        hero.classList.remove("is-revealed", "is-clearing", "is-event-nudge", "is-chat-nudge");
+        hero.classList.remove("is-revealed", "is-clearing");
       });
       at(9300, playLoop);
     }
