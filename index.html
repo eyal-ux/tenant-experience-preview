@@ -783,9 +783,10 @@ grid-template-rows:0fr!important;
     }
 
     function park() {
-      var stageBox = stage.getBoundingClientRect();
-      cursor.style.setProperty("--cursor-x", stageBox.width * 0.62 + "px");
-      cursor.style.setProperty("--cursor-y", stageBox.height * 0.32 + "px");
+      stage.classList.add("is-parking");
+      moveTo(tabs[0]);
+      cursor.getBoundingClientRect();
+      stage.classList.remove("is-parking");
     }
 
     function press(node, action) {

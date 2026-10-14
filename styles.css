@@ -1675,6 +1675,10 @@
   transition: transform 800ms cubic-bezier(0.65, 0, 0.35, 1), opacity 280ms var(--ease-out);
 }
 
+.bb-stage.is-parking .bb-cursor {
+  transition: none;
+}
+
 .bb-stage.is-cursor .bb-cursor {
   opacity: 1;
 }
